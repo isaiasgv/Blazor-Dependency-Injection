@@ -29,6 +29,7 @@ namespace BlazorDependencyInjection
         {
             services.AddRazorPages();
             services.AddServerSideBlazor();
+            services.AddMvc();
             services.AddSingleton<WeatherForecastService>();
 
             services.AddScoped<ICounterService, CounterService>();
@@ -50,11 +51,10 @@ namespace BlazorDependencyInjection
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
             app.UseRouting();
-
             app.UseEndpoints(endpoints =>
             {
+               
                 endpoints.MapBlazorHub();
                 endpoints.MapFallbackToPage("/_Host");
             });
